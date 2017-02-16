@@ -1,0 +1,79 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+	    <link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+		<style>
+			h5{
+		        padding-top: 8px;
+		        padding-bottom: 8px;
+		        text-indent: 12px;
+		    }
+		    
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+				font-size: 15px;
+				margin-top:8px;
+				color: #333;
+			}
+
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+				font-size: 5px;
+  				margin-top: 8px;
+   				color: #eee;    
+   				position: absolute;
+    			bottom: 5px;
+				background-color: rgba(0, 0, 0, 0.39);
+				line-height: 20px;
+				height: 20px;
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" style="background-color:#fff">
+		    <h5 style="background-color:#efeff4">直播</h5>
+		    <ul class="mui-table-view mui-grid-view">
+	        {% for list in live_session %}
+        		<li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="{% static "assets/img/shuijiao.jpg" %}">
+		                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="{% static "assets/icon/room.svg" %}">{{list.title}}
+		                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+		                <img style="width: 18px; height: 18px; float: left;" src="{% static "assets/icon/eye.svg" %}">{{list.playCount}}</span></div></a></li>
+		    {% endfor %}
+		        <!-- <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="../assets/img/muwu.jpg">
+		                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="../assets/icon/room.svg">想要一间木屋
+		                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+		                <img style="width: 18px; height: 18px; float: left;" src="../assets/icon/eye.svg">998</span></div></a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#"><img class="mui-media-object" src="../assets/img/cbd.jpg">
+		                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="../assets/icon/room.svg">Color of SIP CBD
+		                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+		                <img style="width: 18px; height: 18px; float: left;" src="../assets/icon/eye.svg">25</span></div></a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="../assets/img/yuantiao.jpg">
+		                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="../assets/icon/room.svg">静静看这世界
+		                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+		                <img style="width: 18px; height: 18px; float: left;" src="../assets/icon/eye.svg">20158</span></div></a></li> -->
+		    </ul>    
+		</div>
+	</body>
+	<script src="../assets/js/mui/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+	</script>
+</html>

@@ -1,0 +1,436 @@
+{%load staticfiles%}
+{% load url from future %}
+{% load i18n %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+		}
+		footer {
+			position: fixed;
+			width: 100%;
+			height: 50px;
+			min-height: 50px;
+			border-top: solid 1px #bbb;
+			left: 0px;
+			bottom: 0px;
+			overflow: hidden;
+			padding: 0px 50px;
+			background-color: #fafafa;
+			margin-bottom: 60px;
+			padding-left: 5px;
+		}
+		.footer-left {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			left: 0px;
+			bottom: 0px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 100%;
+			padding: 12px 4px;
+		}
+		.footer-right {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			right: 0px;
+			bottom: 0px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 100%;
+			padding: 12px 5px;
+			display: inline-block;
+		}
+		.footer-center {
+			height: 100%;
+			padding: 5px 0px;
+		}
+		.footer-center [class*=input] {
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+		}
+		.footer-center .input-text {
+			background: #fff;
+			border: solid 1px #ddd;
+			padding: 10px !important;
+			font-size: 16px !important;
+			line-height: 18px !important;
+			font-family: verdana !important;
+			overflow: hidden;
+		}
+		.footer-center .input-sound {
+			background-color: #eee;
+		}
+		.mui-content {
+			height: 100%;
+			padding: 44px 0px 120px 0px;
+			overflow: auto;
+			background-color: #eaeaea;
+		}
+		#msg-list {
+			height: 100%;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+		.msg-item {
+			padding: 8px;
+			clear: both;
+		}
+		.msg-item .mui-item-clear {
+			clear: both;
+		}
+		.msg-item .msg-user {
+			width: 38px;
+			height: 38px;
+			border: solid 1px #d3d3d3;
+			display: inline-block;
+			background: #fff;
+			border-radius: 3px;
+			vertical-align: top;
+			text-align: center;
+			float: left;
+			padding: 3px;
+			color: #ddd;
+		}
+		
+		.msg-item .msg-user-img{
+			width: 38px;
+			height: 38px;
+			display: inline-block;
+			border-radius: 3px;
+			vertical-align: top;
+			text-align: center;
+			float: left;
+			color: #ddd;
+		}
+		
+		.msg-item .msg-content {
+			display: inline-block;
+			border-radius: 5px;
+			border: solid 1px #d3d3d3;
+			background-color: #FFFFFF;
+			color: #333;
+			padding: 8px;
+			vertical-align: top;
+			font-size: 15px;
+			position: relative;
+			margin: 0px 8px;
+			max-width: 75%;
+			min-width: 35px;
+			float: left;
+		}
+		.msg-item .msg-content .msg-content-inner {
+			overflow-x: hidden;
+		}
+		.msg-item .msg-content .msg-content-arrow {
+			position: absolute;
+			border: solid 1px #d3d3d3;
+			border-right: none;
+			border-top: none;
+			background-color: #FFFFFF;
+			width: 10px;
+			height: 10px;
+			left: -5px;
+			top: 12px;
+			-webkit-transform: rotateZ(45deg);
+			transform: rotateZ(45deg);
+		}
+		.msg-item-self .msg-user,
+		.msg-item-self .msg-content {
+			float: right;
+		}
+		.msg-item-self .msg-content .msg-content-arrow {
+			left: auto;
+			right: -5px;
+			-webkit-transform: rotateZ(225deg);
+			transform: rotateZ(225deg);
+		}
+		.msg-item-self .msg-content,
+		.msg-item-self .msg-content .msg-content-arrow {
+			background-color: #4CD964;
+			color: #fff;
+			border-color: #2AC845;
+		}
+		footer .mui-icon {
+			color: #000;
+		}
+		footer .mui-icon:active {
+			color: #007AFF !important;
+		}
+		footer .mui-icon-paperplane:before {
+			content: "发送";
+		}
+		footer .mui-icon-paperplane {
+			/*-webkit-transform: rotateZ(45deg);
+			transform: rotateZ(45deg);*/
+			
+			font-size: 16px;
+			word-break: keep-all;
+			line-height: 100%;
+			padding-top: 6px;
+			color: rgba(0, 135, 250, 1);
+		}
+		#msg-sound {
+			-webkit-user-select: none !important;
+			user-select: none !important;
+		}
+		.rprogress {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 140px;
+			height: 140px;
+			margin-left: -70px;
+			margin-top: -70px;
+			/*background-image: url(../images/arecord.png);*/
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 30px 30px;
+			background-color: rgba(0, 0, 0, 0.7);
+			border-radius: 5px;
+			display: none;
+			-webkit-transition: .15s;
+		}
+		.rschedule {
+			background-color: rgba(0, 0, 0, 0);
+			border: 5px solid rgba(0, 183, 229, 0.9);
+			opacity: .9;
+			border-left: 5px solid rgba(0, 0, 0, 0);
+			border-right: 5px solid rgba(0, 0, 0, 0);
+			border-radius: 50px;
+			box-shadow: 0 0 15px #2187e7;
+			width: 46px;
+			height: 46px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -23px;
+			margin-top: -23px;
+			-webkit-animation: spin 1s infinite linear;
+			animation: spin 1s infinite linear;
+		}
+		.r-sigh{
+			display: none;
+			border-radius: 50px;
+			box-shadow: 0 0 15px #2187e7;
+			width: 46px;
+			height: 46px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -23px;
+			margin-top: -23px;
+			text-align: center;
+			line-height: 46px;
+			font-size: 40px;
+			font-weight: bold;
+			color: #2187e7;
+		}
+		.rprogress-sigh{
+			background-image: none !important;
+		}
+		.rprogress-sigh .rschedule{
+			display: none !important;
+		}
+		.rprogress-sigh .r-sigh{
+			display: block !important;
+		}
+		.rsalert {
+			font-size: 12px;
+			color: #bbb;
+			text-align: center;
+			position: absolute;
+			border-radius: 5px;
+			width: 130px;
+			margin: 5px 5px;
+			padding: 5px;
+			left: 0px;
+			bottom: 0px;
+		}
+		@-webkit-keyframes spin {
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+		#h {
+			background: #fff;
+			border: solid 1px #ddd;
+			padding: 10px !important;
+			font-size: 16px !important;
+			font-family: verdana !important;
+			line-height: 18px !important;
+			overflow: visible;
+			position: absolute;
+			left: -1000px;
+			right: 0px;
+			word-break: break-all;
+			word-wrap: break-word;
+		}
+		.cancel {
+			background-color: darkred;
+		}
+	</style>
+</head>
+
+<body contextmenu="return false;">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">{{talkto}}</h1>
+	</header>
+	<pre id='h'></pre>
+	<script id='msg-template' type="text/template">
+		<% for(var i in record){ var item=record[i]; %>
+			<div class="msg-item <%= (item.sender=='self'?' msg-item-self':'') %>" msg-type='<%=(item.type)%>' msg-content='<%=(item.content)%>'>
+				<% if(item.sender=='self' ) { %>
+					<i class="msg-user mui-icon mui-icon-person"></i>
+				<% } else { %>
+					<img class="msg-user-img" src="../images/logo.png" alt="" />
+				<% } %>
+				<div class="msg-content">
+					<div class="msg-content-inner">
+						<% if(item.type=='text' ) { %>
+							<%=( item.content|| '&nbsp;&nbsp;') %>
+						<% } else if(item.type=='image' ) { %>
+							<img class="msg-content-image" src="<%=(item.content)%>" style="max-width: 100px;" />
+						<% } else if(item.type=='sound' ) { %>
+							<span class="mui-icon mui-icon-mic" style="font-size: 18px;font-weight: bold;"></span>
+							<span class="play-state">点击播放</span>
+						<% } %>
+					</div>
+					<div class="msg-content-arrow"></div>
+				</div>
+				<div class="mui-item-clear"></div>
+			</div>
+		<% } %>
+	</script>
+	<div class="mui-content">
+		<div id='msg-list' class="chat">
+	        {% for message in chat.messages.all %}
+	            {% if message.name %}
+	            	{% if message.name == user.username %}
+                	<ul class="msg-item msg-item-self" msg-type='<%=(item.type)%>' msg-content='<%=(item.content)%>' id="message_{{ message.id }}">
+						<i class="msg-user mui-icon mui-icon-person"></i>
+						<div class="msg-content">
+							<div class="msg-content-inner">
+								{{ message.message }}
+							</div>
+							<div class="msg-content-arrow"></div>
+						</div>
+						<div class="mui-item-clear"></div>
+					</ul>
+					{% else %}
+                	<div class="msg-item" msg-type='<%=(item.type)%>' msg-content='<%=(item.content)%>' id="message_{{ message.id }}">
+						<i class="msg-user mui-icon mui-icon-person"></i>
+						<div class="msg-content">
+							<div class="msg-content-inner">
+								{{ message.message }}
+							</div>
+							<div class="msg-content-arrow"></div>
+						</div>
+						<div class="mui-item-clear"></div>
+					</div>
+					{% endif %}
+	            {% else %}
+	                <!-- <li id="message_{{ message.id }}" class="system_message">{{ message.message }}</li> -->
+	            {% endif %}
+	        {% endfor %}
+		</div>
+	</div>
+	<footer>
+<!-- 		<div class="footer-left">
+			<i id='msg-image' class="mui-icon mui-icon-camera" style="font-size: 28px;"></i>
+		</div> -->
+		<div class="footer-center">
+            <form id="form_send" method="post" action="{% url "chat:client_post_message" chat.hash_key %}">
+                {% csrf_token %}
+                <input type="hidden" class="chat_id" name="chat_id" value="{{ chat.id }}" />
+                <input type="text" class="message_box" name="message" />
+                
+        		<label for="" class="footer-right">
+					<i id='msg-type' class="mui-icon mui-icon-paperplane send_message_button"></i>
+				</label>
+            </form>
+		</div>
+	</footer>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}live_support/js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}live_support/js/live_support.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	    document.get_messages_url = "{% url "chat:client_get_messages" chat.hash_key %}";
+
+	    function send(){
+	    	document.getElementById('form_send').submit();
+	    }
+
+	    // Message sent, and in the resp is a list of new messages from the server 
+		// (including the one you just sent). Add those messages to the message list
+		function messageSent(response, code) {
+		    if (code == 'success') {
+		    	$('.message_box').val("");
+		        var chat_id = response[0].chat;
+		        var message_list = $('#chat_' + chat_id).find('ul');
+		        var message_box = $('#chat_' + chat_id).find('.message_box');
+		        $(message_box).val('');
+		        for (var index in response) {
+		            var message = response[index];
+
+					if (message.name == '{{user.username}}'){
+						$(".chat").append(
+	                	"<div class='msg-item msg-item-self' id='message_" + message.pk +"'>" 
+							+ "<i class='msg-user mui-icon mui-icon-person'></i>"
+							+ "<div class='msg-content'>"
+							+	"<div class='msg-content-inner'>" + message.message
+							+	"</div>"
+							+	"<div class='msg-content-arrow'></div>"
+						+	"</div>"
+						+	"<div class='mui-item-clear'></div>"
+					+	"</div>");
+					}else {
+						$(".chat").append(
+	                	"<div class='msg-item' id='message_" + message.pk +"'>" 
+							+ "<i class='msg-user mui-icon mui-icon-person'></i>"
+							+ "<div class='msg-content'>"
+							+	"<div class='msg-content-inner'>" + message.message
+							+	"</div>"
+							+	"<div class='msg-content-arrow'></div>"
+						+	"</div>"
+						+	"<div class='mui-item-clear'></div>"
+					+	"</div>");
+					}
+				}
+		        // Scroll to the bottom of the message list.
+		        scrollAll();
+		    }
+		}
+	</script>
+</body>
+</html>

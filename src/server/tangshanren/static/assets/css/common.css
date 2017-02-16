@@ -1,0 +1,62 @@
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+}
+
+/***********************************
+            分割线
+***********************************/
+.seg_2px{
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 2px 0;
+  background-color: #eee;
+}
+
+.seg_5px{
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 5px 0;
+  background-color: #eee;
+}
+
+.seg_50px{
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding-top: 48px;
+  background-color: #fff;
+}
+
+.seg_height_50px{
+  width: 100%;
+  margin: 0;
+  height: 50px;
+  list-style: none;
+  background-color: #fff;
+}
+
+.seg_height_50px_gray{
+  width: 100%;
+  margin: 0;
+  height: 50px;
+  list-style: none;
+  background-color: #eee;
+}
+
+.seg_5px_white{
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 5px 0;
+  background-color: #FFF;
+}
+
+.mui-bar-nav{
+  margin-top: 2px;
+}

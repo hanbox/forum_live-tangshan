@@ -1,0 +1,31 @@
+
+
+/*  Datetime ........................................... */
+
+p.datetime {
+    white-space: nowrap !important;
+    br {
+        display: none;
+    }
+    input.vTimeField {
+        margin-left: 6px;
+    }
+}
+
+
+/*  Hide Images in Templates ........................................... */
+
+a.add-another img, a.related-lookup img {
+    opacity: 0;
+}
+a.related-lookup img {
+    display: none;
+}
+
+
+/*  Hide Images in Templates ........................................... */
+
+.deletelink {
+    padding-left: 12px;
+    background: url(../../admin/img/icon-deletelink.svg) 0 .25em no-repeat;
+}

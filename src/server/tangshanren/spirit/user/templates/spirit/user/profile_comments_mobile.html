@@ -1,0 +1,81 @@
+{%load staticfiles%}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+    <link rel="stylesheet" href="{% static "spirit/stylesheets/styles.all.min.css" %}">
+    <script src="{% static "spirit/scripts/all.min.js" %}"></script>
+    <style type="text/css">
+        .mui-input-group .mui-input-row{
+            height: auto;
+        }
+
+        ul.reply-markdown{
+            width: 70%;
+            margin: 10px auto;
+            list-style: none;
+        }
+        .profile-avatar {
+		    width: 100px;
+		    height: 100px;
+		    border-radius: 100px;
+		}
+		.button, input[type=submit].button {
+		    display: block;
+		    width: 25%;
+		    text-align: center;
+		    background-color: #cecece;
+		    margin-left: 38%;
+		}
+    </style>
+    <script>
+	$( document ).ready(function() {
+		$( "textarea" ).store( "topic_publish_comment" );
+	});
+	</script>
+</head>
+
+<body style="height: auto;background-color:white;">
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">{{ nickname }}</h1>
+    </header>
+
+	{% load spirit_tags i18n tz %}
+
+	<!-- {% block title %}{{ p_user.username }} {% trans "comments" %}{% endblock %} -->
+
+	{% block content %}
+
+	    {% include "spirit/user/_profile_mobile.html" with active_tab=0 %}
+
+	    {% include "spirit/user/_render_comments_list.html" %}
+
+	    {% render_paginator comments %}
+
+	{% endblock %}
+    
+
+    <script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+    <script>
+        function moderate(){
+            document.getElementById('form_moderate').submit();
+        }
+
+        (function($, doc) {
+            $.init({
+                statusBarBackground: '#f7f7f7'
+            });
+        }(mui, document));
+    </script>
+</body>
+</html>
+
+
+

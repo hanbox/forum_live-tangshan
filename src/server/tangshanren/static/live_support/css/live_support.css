@@ -1,0 +1,124 @@
+.clear_left {
+    clear: left;
+}
+
+ul.chat_names {
+    margin: 0px;
+}
+
+ul.chat_names li a.selected {
+    background: #EDF3FE;
+}
+
+ul.chat_names li a.disconnected {
+    background: #B0B0B0;
+}
+
+ul.chat_names li a.new_message {
+    border-color: #CC0000; 
+}
+
+ul.chat_names li {
+    float: left;
+    list-style: none;
+    white-space: nowrap;
+}
+
+ul.chat_names li a {
+    padding: 5px 10px;
+    /*margin-right: -1px;*/
+    border: 1px solid #EDF3FE;
+    cursor: pointer;
+}
+
+
+.message_list {
+    margin: 10px;
+    display: none;
+    border: 1px solid #EDF3FE;
+    width: 500px;
+    height: 200px;
+    position: relative;
+}
+
+.message_list ul {
+    padding: 5px;
+    margin: 0;
+    overflow-y: scroll;
+    height: 165px;
+}
+
+.message_list li {
+    list-style: none;
+}
+
+.pending_chats ul li {
+    list-style: none;
+}
+.pending_chats ul li a.inactive {
+    color: #CC0000; 
+}
+
+.pending_chats ul {
+    margin-left: 5px;
+}
+
+.pending_chats {
+    float: left;
+    width: 200px;
+}
+
+.active_chats {
+    float: left;
+}
+
+.chat .status {
+    padding: 5px;
+    color: #CC0000;
+    background: #fff;
+    right: 15px;
+    position: absolute;
+    display: none;
+}
+
+.message_box_container {
+    position: absolute;
+    bottom: 0;
+    width: 500px;
+    height: 25px;
+}
+.message_box_container form {
+    display: inline;
+}
+.message_box_container input {
+    margin: 2px 0;
+}
+.message_box_container .message_box {
+    width: 406px;
+    padding: 3px 0;
+}
+
+.message_box_container .send_message_button {
+    width: 45px;
+}
+
+.message_box_container .end_chat_button {
+    width: 39px;
+}
+
+.start_chat p {
+    padding: 0;
+    margin: 10px 0;
+}
+
+.start_chat textarea {
+    height: 85px;
+}
+
+.start_chat label {
+    display: block;
+}
+
+.system_message {
+    color: #D14836;
+}

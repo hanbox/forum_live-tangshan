@@ -1,0 +1,238 @@
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Spirit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-23 19:55+0000\n"
+"PO-Revision-Date: 2015-10-14 19:38+0000\n"
+"Last-Translator: Esteban M. Castro Borsani <ecastroborsani@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/spirit-project/spirit/"
+"language/ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: forms.py:30
+msgid "Write comment..."
+msgstr "Написать комментарий..."
+
+#: forms.py:101
+#, python-format
+msgid "Unsupported file format. Supported formats are %s."
+msgstr "Неподдерживаемый формат. Поддерживаемые форматы %s."
+
+#: models.py:20 models.py:34 models.py:49
+msgid "comment"
+msgstr "комментарий"
+
+#: models.py:21
+msgid "topic moved"
+msgstr "тема перемещена"
+
+#: models.py:22
+msgid "topic closed"
+msgstr "тема закрыта"
+
+#: models.py:23
+msgid "topic unclosed"
+msgstr "тема открыта"
+
+#: models.py:24
+msgid "topic pinned"
+msgstr "тема прикреплена"
+
+#: models.py:25
+msgid "topic unpinned"
+msgstr "тема откреплена"
+
+#: models.py:35
+msgid "comment html"
+msgstr "комментарий HTML"
+
+#: models.py:36
+msgid "action"
+msgstr "действие"
+
+#: models.py:42
+msgid "modified count"
+msgstr "количество изменений"
+
+#: models.py:43
+msgid "likes count"
+msgstr "количество лайков"
+
+#: models.py:50
+msgid "comments"
+msgstr "комментарии"
+
+#: tags.py:23
+msgid "This topic has been moved"
+msgstr ""
+
+#: tags.py:25
+msgid "This topic has been closed"
+msgstr ""
+
+#: tags.py:27
+msgid "This topic has been unclosed"
+msgstr ""
+
+#: tags.py:29
+msgid "This topic has been pinned"
+msgstr ""
+
+#: tags.py:31
+msgid "This topic has been unpinned"
+msgstr ""
+
+#: tags.py:33
+msgid "Unknown topic moderation action"
+msgstr ""
+
+#: templates/spirit/comment/_editor.html:6
+msgid "Bold"
+msgstr "Жирный"
+
+#: templates/spirit/comment/_editor.html:7
+msgid "Italic"
+msgstr "Курсив"
+
+#: templates/spirit/comment/_editor.html:8
+msgid "List"
+msgstr "Список"
+
+#: templates/spirit/comment/_editor.html:9
+msgid "URL"
+msgstr "адрес"
+
+#: templates/spirit/comment/_editor.html:10
+msgid "Image"
+msgstr "Изображение"
+
+#: templates/spirit/comment/_editor.html:11
+msgid "Poll"
+msgstr ""
+
+#: templates/spirit/comment/_editor.html:12
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: templates/spirit/comment/_editor.html:32
+#, python-brace-format
+msgid "uploading {image_name}"
+msgstr ""
+
+#: templates/spirit/comment/_editor.html:35
+msgid "bolded text"
+msgstr "жирный текст"
+
+#: templates/spirit/comment/_editor.html:36
+msgid "italicised text"
+msgstr "курсив"
+
+#: templates/spirit/comment/_editor.html:37
+msgid "list item"
+msgstr "элемент списка"
+
+#: templates/spirit/comment/_editor.html:38
+msgid "link text"
+msgstr "текст ссылки"
+
+#: templates/spirit/comment/_editor.html:39
+msgid "link url"
+msgstr "адрес ссылки"
+
+#: templates/spirit/comment/_editor.html:40
+msgid "image text"
+msgstr "название изображения"
+
+#: templates/spirit/comment/_editor.html:41
+msgid "image url"
+msgstr "адрес изображения"
+
+#: templates/spirit/comment/_editor.html:42
+msgid "Title"
+msgstr ""
+
+#: templates/spirit/comment/_editor.html:43
+msgid "Description"
+msgstr ""
+
+#: templates/spirit/comment/_form.html:17
+#: templates/spirit/comment/publish.html:18
+#: templates/spirit/comment/update.html:18
+msgid "Publish"
+msgstr "Опубликовать"
+
+#: templates/spirit/comment/_render_list.html:47
+msgid "delete"
+msgstr ""
+
+#: templates/spirit/comment/_render_list.html:50
+msgid "report"
+msgstr "отчёт"
+
+#: templates/spirit/comment/_render_list.html:53
+msgid "share"
+msgstr ""
+
+#: templates/spirit/comment/_render_list.html:57
+#: templates/spirit/comment/_render_list.html:139
+msgid "remove like"
+msgstr ""
+
+#: templates/spirit/comment/_render_list.html:60
+#: templates/spirit/comment/_render_list.html:138
+msgid "like"
+msgstr ""
+
+#: templates/spirit/comment/_render_list.html:67
+msgid "edit"
+msgstr "редактировать"
+
+#: templates/spirit/comment/_render_list.html:71
+msgid "quote"
+msgstr "цитата"
+
+#: templates/spirit/comment/_render_list.html:72
+msgid "reply"
+msgstr "ответить"
+
+#: templates/spirit/comment/_render_list.html:79
+msgid "close"
+msgstr "закрыть"
+
+#: templates/spirit/comment/_render_list.html:110
+msgid "This comment was deleted"
+msgstr "Этот комментарий был удалён"
+
+#: templates/spirit/comment/_render_list.html:118
+msgid "undelete"
+msgstr ""
+
+#: templates/spirit/comment/moderate.html:5
+#: templates/spirit/comment/moderate.html:9
+msgid "Moderate comment"
+msgstr "Модерировать комментарий"
+
+#: templates/spirit/comment/moderate.html:14
+msgid "Apply"
+msgstr "Применить"
+
+#: templates/spirit/comment/publish.html:5
+msgid "Publish comment"
+msgstr "Опубликовать комментарий"
+
+#: templates/spirit/comment/publish.html:9
+msgid "Publishing comment on"
+msgstr "Опубликовать комментарий с помощью"
+
+#: templates/spirit/comment/update.html:5
+#: templates/spirit/comment/update.html:9
+msgid "Edit comment"
+msgstr "Редактировать комментарий"

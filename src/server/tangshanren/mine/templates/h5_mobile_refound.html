@@ -1,0 +1,98 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+	<style>
+		.seg_5px{
+		  width: 100%;
+		  margin: 0;
+		  list-style: none;
+		  padding: 5px 0;
+		  background-color: #eee;
+		}
+
+		.userinfo {
+		  width: 100%;
+		  padding: 20px 0;
+		  margin: 0 auto;
+		  background-color: #FFF;
+		}
+
+		.userinfo li {
+		  width: 100%;
+		  position: relative;
+		  list-style: none;
+		  text-align: center;
+		  margin: 0 auto;
+		}
+
+		.userinfo li .c-userimg {
+		  position: relative;
+		/*  width: 100px;*/
+		  height: 100px;
+		  text-align: center;
+		  margin: 0 auto;
+		  top: 10px;
+		  border-radius: 50%;
+		  border:2px solid white;
+		}
+
+		.userinfo li .c-username {
+		  position: relative;
+		  text-align: center;
+		  font-size: 22px;
+		  font-weight: 300;
+		  color: #929292;
+		  top: 16px;
+		}
+
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+			margin-top: 10px;
+			height:20px;
+			line-height: 20px;
+			font-size: 12px;
+			color:#777777;
+		}
+
+		.mui-popover {
+			height: 300px;
+		}
+	</style>
+</head>
+
+<body>
+			<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">提现</h1>
+		</header>
+	<div class="mui-content">
+		<form class="mui-input-group">
+		    <div class="mui-input-row">
+		        <label>唐币</label>
+		        <span>{{acount.balance}}<span>
+		    </div>
+		    <div class="mui-button-row">
+		        <button type="button" class="mui-btn mui-btn-primary" >提现</button>
+		        <button type="button" class="mui-btn mui-btn-danger" >取消</button>
+		    </div>
+		</form>
+
+    <form id="form_logout" action="{% url "spirit:user:auth:logout" %}?next=/mine" method="post" style="display: none;">
+        {% csrf_token %}
+    </form>
+
+	<script type="text/javascript" src="{% static "assets/js/jquery-3.1.1.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/layer.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="1105849595" data-redirecturi="http://192.168.0.103:8080/mine" charset="utf-8" ></script>
+
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

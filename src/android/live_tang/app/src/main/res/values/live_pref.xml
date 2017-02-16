@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pref_default_decoder">2</string>
+    <string name="pref_decoder_type">encoder</string>
+    <string name="pref_bitrate_type">video bitrate</string>
+    <string name="pref_resolution">video resolution</string>
+    <string name="pref_settings">settings</string>
+    <string name="pref_category_general">general</string>
+    <string name="pref_category_debug">debug</string>
+    <string name="pref_category_about">about</string>
+    <string name="pref_open_log">log</string>
+    <string name="pref_log_cache_dir">log output dir</string>
+    <string name="pref_default_log_cache_dir">/sdcard/ucloud/log</string>
+    <string-array name="pref_decoder_names">
+        <item>x264</item>
+        <item>MediaCodec</item>
+    </string-array>
+
+    <string-array name="pref_decoder_values">
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="pref_bitrate_names">
+        <item>VIDEO_BITRATE_LOW</item>
+        <item>VIDEO_BITRATE_NORMAL</item>
+        <item>VIDEO_BITRATE_MEDIUM</item>
+        <item>VIDEO_BITRATE_HIGH</item>
+    </string-array>
+
+    <string-array name="pref_bitrate_values">
+        <item>200</item>
+        <item>400</item>
+        <item>600</item>
+        <item>800</item>
+    </string-array>
+
+    <string-array name="pref_hw_resolution_names">
+        <item>RATIO_AUTO</item>
+        <item>RATIO_4x3</item>
+        <item>RATIO_16x9</item>
+        <item>RATIO_16x9_LOW</item>
+        <item>RATIO_16x9_HIGH</item>
+    </string-array>
+
+    <string-array name="pref_hw_resolution_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="pref_sw_resolution_names">
+        <item>RATIO_AUTO</item>
+        <item>RATIO_4x3</item>
+    </string-array>
+
+    <string-array name="pref_sw_resolution_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="pref_video_capture_orientation_names">
+        <item>ORIENTATION_PORTRAIT</item>
+        <item>ORIENTATION_LANDSCAPE</item>
+    </string-array>
+
+    <string-array name="pref_video_capture_orientation_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string name="pref_default_video_frame_rate">15</string>
+    <string name="pref_video_frame_rate">framerate</string>
+
+    <string name="pref_default_video_encoding_bit_rate">400</string>
+    <string name="pref_default_video_resolution">0</string>
+
+    <string name="pref_video_encoding_bit_rate">bitrate</string>
+
+
+    <string name="pref_default_video_size_width">640</string>
+    <string name="pref_video_size_width">video width</string>
+
+
+    <string name="pref_default_video_size_height">480</string>
+    <string name="pref_video_size_height">video height</string>
+
+    <string name="pref_default_video_publish_and_play_id">ucloud_demo</string>
+    <string name="pref_default_video_publish_and_play_title">stream id</string>
+    <string name="pref_default_video_capture_orientation">1</string>
+    <string name="pref_video_catpure_type">video capture orientation</string>
+
+</resources>

@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spirit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-23 19:55+0000\n"
+"PO-Revision-Date: 2015-07-25 18:00+0000\n"
+"Last-Translator: Esteban M. Castro Borsani <ecastroborsani@gmail.com>\n"
+"Language-Team: Spirit\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:13
+msgid "site name"
+msgstr "nazwa strony"
+
+#: forms.py:14
+msgid "site description"
+msgstr "opis strony"
+
+#: forms.py:15
+msgid "footer snippet"
+msgstr "wycinek stopki"
+
+#: forms.py:17
+msgid "This gets rendered just before the footer in your template."
+msgstr "To jest renderowane w twoim szablonie bezpośrednio przed stopką. "
+
+#: forms.py:18
+msgid "comments per page"
+msgstr ""
+
+#: forms.py:19
+msgid "topics per page"
+msgstr ""
+
+#: templates/spirit/admin/_side_menu.html:3
+msgid "Show menu"
+msgstr "Pokaż menu"
+
+#: templates/spirit/admin/_side_menu.html:9
+#: templates/spirit/admin/dashboard.html:5
+#: templates/spirit/admin/dashboard.html:11
+msgid "Dashboard"
+msgstr "Panel"
+
+#: templates/spirit/admin/_side_menu.html:10
+msgid "Basic settings"
+msgstr "Podstawowe ustawienia"
+
+#: templates/spirit/admin/_side_menu.html:11
+#: templates/spirit/admin/dashboard.html:47
+msgid "Categories"
+msgstr "Kategorie"
+
+#: templates/spirit/admin/_side_menu.html:12
+#: templates/spirit/admin/dashboard.html:31
+msgid "Topics"
+msgstr "Wątki"
+
+#: templates/spirit/admin/_side_menu.html:13
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: templates/spirit/admin/_side_menu.html:14
+#: templates/spirit/admin/dashboard.html:43
+msgid "Flags"
+msgstr "Flagi"
+
+#: templates/spirit/admin/config_basic.html:5
+#: templates/spirit/admin/config_basic.html:11
+msgid "Basic Settings"
+msgstr "Podstawowe Ustawienia"
+
+#: templates/spirit/admin/config_basic.html:17
+msgid "Save"
+msgstr "Zapisz"
+
+#: templates/spirit/admin/dashboard.html:14
+msgid "Software"
+msgstr "Software"
+
+#: templates/spirit/admin/dashboard.html:17
+msgid "Installed"
+msgstr "Zainstalowane"
+
+#: templates/spirit/admin/dashboard.html:18
+msgid "Latest"
+msgstr "Najnowsze"
+
+#: templates/spirit/admin/dashboard.html:22
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: templates/spirit/admin/dashboard.html:27
+msgid "Members"
+msgstr "Członkowie"
+
+#: templates/spirit/admin/dashboard.html:35
+msgid "Comments"
+msgstr "Komentarze"
+
+#: templates/spirit/admin/dashboard.html:39
+msgid "Likes"
+msgstr "Polubienia"
+
+#: views.py:30
+msgid "Settings updated!"
+msgstr "Ustawienia uaktualnione!"

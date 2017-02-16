@@ -1,0 +1,74 @@
+{% load spirit_tags i18n %}
+{%load staticfiles%}
+
+<style type="text/css">
+    .profile-date, .profile-title {
+        text-align: left;
+        font-size: 10px;
+    }
+
+    .button, input[type=submit].button{
+        margin-bottom:5px;
+        background-color:#fefefe;
+    }
+
+    .profile-avatar{
+        width:60px;
+        height:60px;
+    }
+
+</style>
+    <div class="profile-img" style="margin-top: 70px;">
+		<img class="profile-avatar" src="{{headimgurl}}" />
+		<div class="profile-username" style="margin-top:10px;">{{ nickname }}</div>
+	</div>
+
+    <div class="profile-info">
+		<ul class="profile-track">
+			<li>
+				<div class="profile-title">注册时间</div>
+				<div class="profile-date">{{ p_user.date_joined }}</div>
+			</li><!--
+		 --><li>
+				<div class="profile-title">最后登录</div>
+				<div class="profile-date">{{ p_user.st.last_seen}}</div>
+			</li>
+
+            {% if user.st.is_administrator %}
+                <li>
+                    <div class="profile-title">最近登陆IP</div>
+                    <div class="profile-date">{{ p_user.st.last_ip }}</div>
+                </li>
+            {% endif %}
+		</ul>
+	</div>
+
+    <form action="/user/addfriend/" method="post" id="form">
+        <input type="hidden" name="friendid" value="{{p_user.id}}">
+        <input type="hidden" name="friendname" value="{{p_user.username}}">
+    </form>
+
+    <div class="profile-preferences" style="height: 30px;">
+    {% ifequal user.username p_user.username %}
+            <!-- <a class="button" href="{% url "spirit:user:update" %}" style="margin: 0; float:left;margin-left: 50px;"><i class="fa fa-cog"></i> {% trans "Preferences" %}</a> -->
+    {% else %}
+            <a class="button" onclick="addfriend()" style="margin: 0; float:left;margin-left: 50px;"><i class="fa">
+            <img style="width: 13px; height: 15px;margin-bottom: 6px;" src="{% static "assets/icon/add.svg" %}"></i> 添加好友</a>
+    {% endifequal %}
+
+    {% if user.st.is_administrator %}
+            <a class="button" href="{% url "spirit:admin:user:edit" user_id=p_user.pk %}" style="margin: 0; float:right;margin-right: 50px;"><i class="fa fa-cog"></i> {% trans "Edit user" %}</a>
+    {% endif %}
+    </div>
+
+    <ul class="tabs">
+		<li><a class="tab-link{% ifequal active_tab 0 %} is-selected{% endifequal %}" href="{% url "spirit:user:detail" pk=p_user.pk slug=p_user.st.slug %}" >{% trans "Comments" %}</a></li><!--
+	 --><li><a class="tab-link{% ifequal active_tab 1 %} is-selected{% endifequal %}" href="{% url "spirit:user:topics" pk=p_user.pk slug=p_user.st.slug %}" >{% trans "Topics" %}</a></li><!--
+	 --><li><a class="tab-link{% ifequal active_tab 2 %} is-selected{% endifequal %}" href="{% url "spirit:user:likes" pk=p_user.pk slug=p_user.st.slug %}" >{% trans "Likes" %}</a></li>
+	</ul>
+
+    <script type="text/javascript">
+        function addfriend(){
+            document.getElementById('form').submit();
+        }
+    </script>

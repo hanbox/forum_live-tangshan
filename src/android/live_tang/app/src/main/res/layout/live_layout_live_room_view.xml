@@ -1,0 +1,103 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <com.ucloud.live.widget.UAspectFrameLayout
+        android:id="@+id/container"
+        android:layout_gravity="center"
+        android:background="@color/color_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.ucloud.live.widget.UAspectFrameLayout>
+
+    <include layout="@layout/live_layout_live_room_countdown"></include>
+
+    <include layout="@layout/live_layout_live_room_header_bar"></include>
+
+    <include layout="@layout/live_layout_live_room_record_finish"></include>
+
+    <include layout="@layout/live_layout_live_room_filter_level"></include>
+
+    <View
+        android:id="@+id/focus_index"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/live_style_camera_focus"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/bitrate_txtv"
+        android:layout_width="wrap_content"
+        android:layout_gravity="top|left"
+        android:textColor="@color/color_progress"
+        android:visibility="invisible"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/live_layout_live_room_filter_level"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:id="@+id/edit_send"
+                android:textColor="#ffffff"
+                style="@style/Widget.AppCompat.EditText"
+                android:hint="发送信息"
+                android:layout_width="250dp" />
+
+            <Button
+                android:text="发送"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
+                android:id="@+id/btn_send"
+                android:onClick="OnClick"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+            <ImageView
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:src="@drawable/music"
+            android:id="@+id/image_music"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="OnClick"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_chat"
+            android:layout_weight="0.14"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="70dp"
+            android:layout_height="280dp"
+            android:layout_width="200dp" />
+    </RelativeLayout>
+
+    <include layout="@layout/live_layout_live_room_bottom_bar"></include>
+
+</FrameLayout>

@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="150dp"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="111dp"
+        android:gravity="center">
+	    <TextView 
+	        android:id="@+id/tv_text_hint"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="打开直播间失败，请退出后重试"
+	        android:textColor="#333333"
+	        android:textSize="15dp"
+	        android:layout_margin="20dp"/>
+    </LinearLayout>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ebebeb"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+        
+        <Button 
+            android:id="@+id/btn_dialog_ok"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent" 
+            android:layout_weight="1" 
+            android:background="@null"
+            android:text="确定"
+            android:textColor="#ff4c34"
+            android:textSize="15dp"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/videoviewholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <com.baidu.cyberplayer.core.BVideoView
+            android:id="@+id/video_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+            <RelativeLayout
+            android:layout_width="500dp"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ListView
+                android:layout_width="164dp"
+                android:layout_height="314dp"
+                android:id="@+id/list_chat"
+                android:layout_weight="0.14"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="45dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:layout_alignParentEnd="true">
+
+                <EditText
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/edit_send"
+                    android:textColor="#FFFFFF"
+                    style="@style/Widget.AppCompat.EditText"
+                    android:hint="发送信息" />
+
+                <Button
+                    android:text="发送"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_send"
+                    android:layout_weight="1"
+                    android:onClick="OnClick"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+
+                <ImageView
+                    android:id="@+id/image_gift"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="OnClick"
+                    android:src="@drawable/gift"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        </com.baidu.cyberplayer.core.BVideoView>
+    </RelativeLayout>
+
+</RelativeLayout>

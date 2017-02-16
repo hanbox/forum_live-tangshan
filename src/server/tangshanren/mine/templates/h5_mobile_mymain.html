@@ -1,0 +1,239 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+	<style>
+		.seg_5px{
+		  width: 100%;
+		  margin: 0;
+		  list-style: none;
+		  padding: 5px 0;
+		  background-color: #eee;
+		}
+
+		.userinfo {
+		  width: 100%;
+		  padding: 20px 0;
+		  margin: 0 auto;
+		  background-color: #FFF;
+		}
+
+		.userinfo li {
+		  width: 100%;
+		  position: relative;
+		  list-style: none;
+		  text-align: center;
+		  margin: 0 auto;
+		}
+
+		.userinfo li .c-userimg {
+		  position: relative;
+		/*  width: 100px;*/
+		  height: 100px;
+		  text-align: center;
+		  margin: 0 auto;
+		  top: 10px;
+		  border-radius: 50%;
+		  border:2px solid white;
+		}
+
+		.userinfo li .c-username {
+		  position: relative;
+		  text-align: center;
+		  font-size: 22px;
+		  font-weight: 300;
+		  color: #929292;
+		  top: 16px;
+		}
+
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+			margin-top: 10px;
+			height:20px;
+			line-height: 20px;
+			font-size: 12px;
+			color:#777777;
+		}
+
+		.mui-popover {
+			height: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mui-content">
+		<ul class="userinfo gradient">
+			<li>
+				{% if user.is_authenticated %}
+				<img class="c-userimg service-item" src="{{user_info.headimgurl}}"/>
+				<!-- <img class="c-userimg service-item" src="{% static "assets/img/user_tmp_1.png" %}"/> -->
+				<p class="c-username">
+					{% if state %}
+						{{nackname}}
+					{%else%}
+						{{user.username}}
+					{%endif%}
+				</p>
+				<button id="logout" type="button" class="mui-btn mui-btn-link" style="margin-top:10px;" onclick="logout('{% url "spirit:user:auth:logout" %}?next={% firstof request.get_full_path|urlencode '/' %}')">
+		            注销
+		        </button>
+				{% else %}
+				<img class="c-userimg service-item" src="{% static "assets/img/user_tmp_1.png" %}"/><br/>
+				<button type="button" class="mui-btn" style="margin-top:20px;" onclick="loginregi('{% url "spirit:user:auth:login" %}?next={% firstof request.get_full_path|urlencode '/' %}')">
+		            登录/注册
+		        </button>
+				{% endif %}
+			</li>
+		</ul>
+
+		<div class="seg_5px"></div>
+		
+		<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color:#FFF;">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                    <span class="mui-icon"><img src="{% static "assets/icon/gold.svg" %}" style="height: 25px;"></span>
+                    {% if user.is_authenticated %}
+                    <div class="mui-media-body">唐币{{acount.balance}}</div></a></li>
+                    {% else %}
+                    <div class="mui-media-body">唐币0</div></a></li>
+                    {% endif %}
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a id="btn_local" href="#middlePopover" target="_blank">
+                    <span class="mui-icon"><img src="{% static "assets/icon/local.svg" %}" style="height: 25px;"></span>
+                    <div class="mui-media-body">
+                    	{{local}}
+                    </div></a></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="/live/wantlive/" target="_blank">
+                    <span class="mui-icon"><img src="{% static "assets/icon/live_small.svg" %}" style="height: 25px;"></span>
+                    <div class="mui-media-body">我要直播</div></a></li>
+            <li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a id="btn_recharge" href="javascript:void(0)">
+                    <span class="mui-icon"><img src="{% static "assets/icon/recharge.svg" %}" style="height: 25px;"></span>
+                    <div class="mui-media-body">我要充值</div></a></li>
+            <li  class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="/mine/refound/">
+                    <span class="mui-icon"><img src="{% static "assets/icon/recharge.svg" %}" style="height: 25px;"></span>
+                    <div class="mui-media-body">我要提现</div></a></li>
+        </ul>
+	</div>
+
+    <form id="form_logout" action="{% url "spirit:user:auth:logout" %}?next=/mine" method="post" style="display: none;">
+        {% csrf_token %}
+    </form>
+
+	<div id="middlePopover" class="mui-popover">
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<!-- 唐山市区', '5': '乐亭', '6': '滦南','7': '迁安','8': '丰南','9': '唐海','10': '遵化','11': '迁西','13': '丰润','15': '滦县','16': '玉田','17': '开平' -->
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=4">唐山市区</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=5">乐亭</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=6">滦南</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=7">迁安</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=8">丰南</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=9">唐海</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=10">遵化</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=11">迁西</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=13">丰润</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=15">滦县</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=16">玉田</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="/mine/?changeloc=17">开平</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+    
+	<script type="text/javascript" src="{% static "assets/js/jquery-3.1.1.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/layer.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="1105849595" data-redirecturi="http://192.168.0.103:8080/mine" charset="utf-8" ></script>
+
+	<script type="text/javascript">
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		mui('.mui-scroll-wrapper').scroll();
+		mui('body').on('shown', '.mui-popover', function(e) {
+			//console.log('shown', e.detail.id);//detail为当前popover元素
+		});
+		mui('body').on('hidden', '.mui-popover', function(e) {
+			//console.log('hidden', e.detail.id);//detail为当前popover元素
+		});
+
+		//从页面收集OpenAPI必要的参数。get_user_info不需要输入参数，因此paras中没有参数
+		var paras = {};
+
+		//用JS SDK调用OpenAPI
+		QC.api("get_user_info", paras)
+			//指定接口访问成功的接收函数，s为成功返回Response对象
+			.success(function(s){
+				//成功回调，通过s.data获取OpenAPI的返回数据
+				alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
+
+			})
+			//指定接口访问失败的接收函数，f为失败返回Response对象
+			.error(function(f){
+				//失败回调
+				// alert("获取用户信息失败！");
+			})
+			//指定接口完成请求后的接收函数，c为完成请求返回Response对象
+			.complete(function(c){
+				//完成请求回调
+				// alert("获取用户信息完成！");
+			});
+
+		document.getElementById("btn_recharge").addEventListener('tap', function() {
+			{% if user.is_authenticated %}
+				jsApp.jsStartPay("1");  
+			{% else %}
+				alert("请先登录！");
+			{% endif %}
+		});
+
+		document.getElementById("logout").addEventListener('tap', function() {
+			var btnArray = ['否', '是'];
+			mui.confirm('确定登出吗', '提示', btnArray, function(e) {
+				if (e.index == 1) {
+					document.getElementById('form_logout').submit();
+				}
+			})
+		});
+
+		// document.getElementById("btn_local").addEventListener('tap', function() {
+		// 	  layer.open({
+		// 	    content: ''
+		// 	    ,btn: ['否', '是']
+		// 	    ,yes: function(index){
+		// 	      location.reload();
+		// 	      layer.close(index);
+		// 	    }
+		// 	  });
+		// });
+
+
+
+		function loginregi(strUrl){
+			window.location.href = strUrl; 
+			// window.open(strUrl);
+		}
+
+		function logout(strUrl){
+		}
+	</script>
+</body>
+</html>

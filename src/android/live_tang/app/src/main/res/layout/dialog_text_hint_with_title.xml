@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="229dp"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:id="@+id/tv_text_title"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:background="#383838"
+        android:gravity="center"
+	    android:text="发现新版本"
+	    android:textColor="#ffffff"
+	    android:textSize="18dp"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="133dp"
+        android:gravity="center">
+	    <TextView 
+	        android:id="@+id/tv_text_hint"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="最新版本：1.1.2\n新版本大小：2.44M\n【修复】修复了截图直播无法正常异地验证的bug"
+	        android:layout_margin="30dp"
+	        android:textColor="#333333"
+	        android:textSize="15dp"/>
+    </LinearLayout>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ebebeb"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+        
+        <Button 
+            android:id="@+id/btn_dialog_ok"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent" 
+            android:layout_weight="1" 
+            android:background="@null"
+            android:text="立即更新"
+            android:textColor="#ff4c34"
+            android:textSize="15dp"/>
+        
+        <ImageView 
+	        android:layout_width="1dp"
+	        android:layout_height="fill_parent"
+	        android:background="#ebebeb"/>
+        
+        <Button 
+            android:id="@+id/btn_dialog_cancel"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent" 
+            android:layout_weight="1" 
+            android:background="@null"
+            android:text="以后再说"
+            android:textColor="#666666"
+            android:textSize="15dp"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

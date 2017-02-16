@@ -1,0 +1,77 @@
+{% load url from future %}
+{% load i18n %}
+<script type="text/javascript">
+    // Toggle the chat panel in and out. 
+    function showChat() {
+        // If the chat panel is currently expanded, close it, otherwise 
+        // expand it. Aldo swap out the background image of the toggle button.
+        $('.chat_window').animate({'height': '252px', 'width': '537px'});
+        $('#hide_live_support, #show_live_support, .live_support').toggle();
+    }
+    function hideChat() {
+        // If the chat panel is currently expanded, close it, otherwise 
+        // expand it. Aldo swap out the background image of the toggle button.
+        $('.chat_window').animate({'height': '26px', 'width': '200px'}, function() {
+            $('#hide_live_support, #show_live_support, .live_support').toggle();
+        });
+    }
+    if (typeof(jQuery) == 'undefined') { 
+        jq = document.createElement('script');
+        jq.setAttribute('async', true);
+        jq.setAttribute('type', 'text/javascript');
+        jq.setAttribute('src', '{{ STATIC_URL }}live_support/js/jquery.js');
+        var fs = document.getElementsByTagName('script')[0];
+        fs.parentNode.insertBefore(jq, fs);
+    }
+</script>
+<style>
+.chat_window {
+    position: fixed;
+    display: block;
+    bottom: 0px;
+    right: 20px;
+    z-index: 999;
+    background: #fff;
+    overflow: hidden;
+    border: thin solid black;
+    height: 26px;
+    width: 200px;
+}
+
+.chat_window .live_support {
+    width: 535px;
+    height: 224px;
+    float: left;
+    border: none;
+    display: none;
+}
+
+.chat_window #show_live_support {
+    cursor: pointer;
+    background: #F2F2F2;
+    padding: 3px;
+}
+
+.chat_window #hide_live_support {
+    cursor: pointer;
+    background: #F2F2F2;
+    display: none;
+    padding: 3px;
+}
+
+</style>
+
+<div id="live_support_chat" class="chat_window active">
+    <div id="show_live_support" onClick="showChat()">
+        {% if admin_active %}
+        {% trans 'Chat Now' %} 
+        {% else %}
+        {% trans 'Leave a Message' %} 
+        {% endif %}
+    </div>
+    <div id="hide_live_support" onClick="hideChat()">
+        {% trans 'Welcome to Django Live Support' %}
+    </div>
+    <iframe class="live_support" src="{{ url }}">
+    </iframe>
+</div>

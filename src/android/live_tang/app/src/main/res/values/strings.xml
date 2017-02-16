@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">唐山人</string>
+    <string name="live">直播</string>
+    <string name="shoucang">好友</string>
+    <string name="discover">社区</string>
+    <string name="mine">我的</string>
+    <string name="version_name">1.12</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_test2">TestActivity2</string>
+
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>
+    <string name="quit">退出</string>
+    <string name="title_activity_refound">RefoundActivity</string>
+</resources>

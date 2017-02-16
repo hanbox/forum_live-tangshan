@@ -1,0 +1,205 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+	<style>
+		.mui-control-content {
+		background-color: white;
+		min-height: 215px;
+		}
+		.mui-control-content .mui-loading {
+		margin-top: 50px;
+		}
+
+		.mui-card-header.mui-card-media{
+			padding: 0px;
+		}
+
+		.mui-card-content{
+			font-size: 12px;
+		    position: relative;
+		    padding: 0px;
+		    margin: 0px;
+		    background-color: rgba(0, 0, 0, 0.60);
+		}
+
+		.mui-card-content-inner{
+			padding: 0px;
+			padding-left:20px;
+		}
+
+		p{
+			font-size: 10px;
+			margin-bottom: 0px;
+			color: #eee;
+		}
+		.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+			font-size: 15px;
+			margin-top: 8px;
+			color: #eee;    
+			position: absolute;
+			bottom: 5px;
+			background-color: rgba(0, 0, 0, 0.39);
+			line-height: 20px;
+			height: 20px;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mui-content">
+		<div id="slider_slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				{% for list in ad %}
+					{% if forloop.first %}
+						{% if list.local == local %}
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="{{list.url}}">
+								<img src="/media/{{list.imgp}}" height="150px">
+								<p class="mui-slider-title">{{list.title}}</p>
+							</a>
+						</div>
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="{{list.url}}">
+								<img src="/media/{{list.imgp}}" height="150px">
+								<p class="mui-slider-title">{{list.title}}</p>
+							</a>
+						</div>
+						{% endif %}
+					{% else %}
+						{% if list.local == local %}
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="{{list.url}}">
+								<img src="/media/{{list.imgp}}" height="150px">
+								<p class="mui-slider-title">{{list.title}}</p>
+							</a>
+						</div>
+						{% endif %}
+					{% endif %}
+					{% if forloop.last %}
+						{% if list.local == local %}
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="{{list.url}}">
+								<img src="/media/{{list.imgp}}" height="150px">
+								<p class="mui-slider-title">{{list.title}}</p>
+							</a>
+						</div>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="mui-slider-indicator mui-text-right">
+				<div class="mui-indicator mui-active"></div>
+				{% for list in ad %}
+					{% if forloop.first %}
+					{% else %}
+					<div class="mui-indicator"></div>
+					{% endif %}  
+				{% endfor %}
+			</div>
+		</div>
+
+		<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">
+				最热
+			</a>
+					<a class="mui-control-item" href="#item2mobile">
+				最新
+			</a>
+					<a class="mui-control-item" href="#item3mobile">
+				{{local}}
+			</a>
+
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<ul class="mui-table-view mui-grid-view">
+						{% for list in live_session %}
+			        		<li class="mui-table-view-cell mui-media mui-col-xs-6" onclick="beginLive('{{list.session_pull}}####{{list.room_id}}####{{list.chat_id}}####{{list.auth_id}}####{{user.id}}')">
+					            <a href="#">
+					                <img class="mui-media-object" src="{% static "assets/img/shuijiao.jpg" %}">
+					                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="{% static "assets/icon/room.svg" %}">{{list.title}}
+					                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+					                <img style="width: 18px; height: 18px; float: left;" src="{% static "assets/icon/eye.svg" %}">{{list.playCount}}</span></div></a></li>
+					    {% endfor %}
+			    		</ul> 	
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<ul class="mui-table-view mui-grid-view">
+						{% for list in live_session %}
+			        		<li class="mui-table-view-cell mui-media mui-col-xs-6" onclick="beginLive('{{list.session_pull}}####{{list.room_id}}####{{list.chat_id}}####{{list.auth_id}}####{{user.id}}')">
+					            <a href="#">
+					                <img class="mui-media-object" src="{% static "assets/img/shuijiao.jpg" %}">
+					                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="{% static "assets/icon/room.svg" %}">{{list.title}}
+					                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+					                <img style="width: 18px; height: 18px; float: left;" src="{% static "assets/icon/eye.svg" %}">{{list.playCount}}</span></div></a></li>
+					    {% endfor %}
+			    		</ul> 		
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">		    					    			
+						<ul class="mui-table-view mui-grid-view">
+		    				{% for list in live_session %}
+			    				{% if list.local == 17 %}
+				        		<li class="mui-table-view-cell mui-media mui-col-xs-6" onclick="beginLive('{{list.session_pull}}####{{list.room_id}}####{{list.chat_id}}####{{list.auth_id}}####{{user.id}}')">
+						            <a href="#">
+						                <img class="mui-media-object" src="{% static "assets/img/shuijiao.jpg" %}">
+						                <div class="mui-media-body"><img style="width: 18px; height: 18px; float: left; padding-top: 2px" src="{% static "assets/icon/room.svg" %}">{{list.title}}
+						                <span style="height: 20px; line-height: 20px; float: right; padding-top: 2px; margin-right: 20px;">
+						                <img style="width: 18px; height: 18px; float: left;" src="{% static "assets/icon/eye.svg" %}">{{list.playCount}}</span></div></a></li>
+				                {% endif %}
+					        {% endfor %}
+		    			</ul>
+		    			<div style="height: 10px; background-color: #efeff4;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="seg_height_50px"></div>
+	</div>
+	<script type="text/javascript" src="{% static "assets/js/jquery-3.1.1.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+
+	<script type="text/javascript">
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		
+		(function($) {
+			var slider = mui("#slider_slider");
+			slider.slider({
+				interval: 5000
+			});
+
+			$('.mui-scroll-wrapper').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+			$('.mui-input-group').on('change', 'input', function() {
+				if (this.checked) {
+					sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+					//force repaint
+					sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+				}
+			});
+		})(mui);
+
+		function beginLive(session_id){
+			{% if user.is_authenticated %}
+		    	jsApp.jsStartPullLive(session_id);  
+		    {% else %}
+				alert("请先登陆后使用!")
+		    {% endif %}
+		}
+	</script>
+</body>
+</html>

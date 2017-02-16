@@ -1,0 +1,60 @@
+{%load staticfiles%}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+    <link rel="stylesheet" href="{% static "spirit/stylesheets/styles.all.min.css" %}">
+    <script src="{% static "spirit/scripts/all.min.js" %}"></script>
+    <style type="text/css">
+        .mui-input-group .mui-input-row{
+            height: auto;
+        }
+
+        ul.reply-markdown{
+            width: 70%;
+            margin: 10px auto;
+            list-style: none;
+        }
+    </style>
+    <script>
+	$( document ).ready(function() {
+		$( "textarea" ).store( "topic_publish_comment" );
+	});
+	</script>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">修改标题</h1>
+    </header>
+    <form id="form_update" action="." method="post" class="js-reply mui-input-group" style="margin-top: 50px;">
+        {% csrf_token %}
+
+        {% include "spirit/_form.html" %}
+
+        <div class="container" style="text-align:center;">
+            <button id='update' class="mui-btn mui-btn-primary" onclick="update()" style="margin-top:10px;width: 40%;margin-bottom: 10px;">更新</button>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+    <script>
+        function update(){
+            document.getElementById('form_update').submit();
+        }
+
+        (function($, doc) {
+            $.init({
+                statusBarBackground: '#f7f7f7'
+            });
+        }(mui, document));
+    </script>
+</body>
+</html>

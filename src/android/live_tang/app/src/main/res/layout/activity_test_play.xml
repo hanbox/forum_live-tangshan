@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_test_play"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.live.hanbox.live_tang.test.TestPlayActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <EditText
+                android:id="@+id/getET"
+                android:layout_width="240dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dip"
+                android:layout_weight="5"
+                android:text="rtmp://play.bcelive.com/live/lss-gjttqaxir9fq713i"
+                android:textSize="30px" />
+
+            <Button android:id="@+id/playBtn"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:text="play"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="50dip"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

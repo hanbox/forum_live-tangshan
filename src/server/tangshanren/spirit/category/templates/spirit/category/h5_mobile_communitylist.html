@@ -1,0 +1,90 @@
+{% load spirit_tags i18n %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}"/>
+	<link rel="stylesheet" href="{% static "assets/css/common.css"%}"/>
+	<script type="text/javascript" src="{% static "assets/js/jquery-3.1.1.js"%}"></script>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js"%}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js"%}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+		});
+
+		function OnClickTopic(des){
+			window.location.href = des;
+		}
+	</script>
+	<style>
+		.mui-control-content {
+		background-color: white;
+		min-height: 215px;
+		}
+		.mui-control-content .mui-loading {
+		margin-top: 50px;
+		}
+
+		.mui-card-header.mui-card-media{
+			padding: 0px;
+		}
+
+		.mui-card-content{
+			font-size: 12px;
+		    position: relative;
+		    padding: 0px;
+		    margin: 0px;
+		    background-color: rgba(0, 0, 0, 0.60);
+		}
+
+		.mui-card-content-inner{
+			padding: 0px;
+			padding-left:20px;
+		}
+
+		p{
+			font-size: 10px;
+			margin-bottom: 0px;
+			color: #eee;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">{{ category.title }}</h1>
+	</header>
+	<div class="mui-content">
+	    {% for t in topics %}
+		<div class="mui-card" onClick="OnClickTopic('{{ t.get_bookmark_url }}')">
+			<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url({% static "assets/img/cbd.jpg)"%}">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<img src="{% static "assets/img/logo.png"%}" style="width: 30px;height: 30px;float:left;margin-top: 5px;border-radius:50%">
+						
+						<div style="padding-left:40px">
+							<p>{{t.user}} <span style="margin-left: 20px;color: #bbb;font-size: 5px;">{{ t.last_active|shortnaturaltime }}</span></p>
+							<p style="font-size: 15px;">{{t.title}}</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="mui-card-content" style="position: absolute;width: 100%;bottom: 2px;">
+					<div class="mui-card-content-inner">
+						<span {% if t.category.color %}style="float: left;margin-left: 20px;color: {{ t.category.color }};"{% endif %}>{{ t.category.title }}</span>
+						<span style="float: right;margin-right: 20px;"><img src="{% static "assets/icon/comment_small.svg"%}" style="width: 19px;height: 19px;float:left;">{{t.comment_count}}</span>
+					</div>
+				</div>
+			</div>
+		</div>		
+	    {% empty %}
+	        <p>{% trans "There are no topics here, yet" %}</p>
+	    {% endfor %}
+	</div>
+</body>
+</html>

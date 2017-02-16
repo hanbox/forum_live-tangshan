@@ -1,0 +1,15 @@
+{% load spirit_tags i18n %}
+
+{% include "spirit/user/admin/_tabs.html" with active_tab=active_tab %}
+
+<div class="rows">
+
+    {% for u in users %}
+        <div class="row">
+            <a href="{{ u.get_absolute_url }}">{{ u.username }}</a> <a class="row-edit" href="{% url "spirit:admin:user:edit" user_id=u.pk %}"><i class="fa fa-cog"></i> {% trans "edit" %}</a>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% render_paginator users %}

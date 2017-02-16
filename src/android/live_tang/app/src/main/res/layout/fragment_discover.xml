@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.live.hanbox.live_tang.view.DiscoverFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="166dp"
+            android:layout_y="221dp"
+            android:id="@+id/progressBar" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/mywebview"
+        android:layerType="software"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" >
+
+    </WebView>
+
+</FrameLayout>

@@ -1,0 +1,192 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="{% static "assets/css/mui/mui.min.css" %}" rel="stylesheet" />
+		<link href="{% static "assets/css/mui/style.css" %}" rel="stylesheet" />
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 30%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 70%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			.upload-img{
+			  position: relative;
+			  width: 100px;
+			  height: 100px;
+			}
+
+			#upload_image{
+			  position: absolute;
+			  font-size:12px;
+			  width: 120px;
+			  height: 100px;
+			  filter:alpha(opacity:0);
+			  opacity: 0;
+			  z-index: 100;
+			  left:45%;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">我要直播</h1>
+		</header>
+		<div class="mui-content">
+			<form id='create_room' action="/live/wantlive/createroom/" class="mui-input-group" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<li style="list-style-type:none; text-align: center;">
+					<input id="upload_image" type="file" name="image" accept="image/*" />
+				</li>
+				<li style="list-style-type:none; text-align: center;">
+					<img id="upload_image_show" class="upload-img" src="{% static "assets/img/placeholder_gray.png" %}">
+				</li>
+				<li style="list-style-type:none; text-align: center;">
+					<span>点击上传封面</span>
+				</li>
+				<div style="height: 30px; background-color: #efeff4;"></div>
+				<div class="mui-input-row">
+					<label>房间名称</label>
+					<input id='roomname' type="text" name="roomname" class="mui-input-clear mui-input" placeholder="房间名称限制10个字以内">
+				</div>
+				<div class="mui-input-row">
+					<label>用户实名</label>
+					<input id='roomname' type="text" name="username" class="mui-input-clear mui-input" placeholder="">
+				</div>
+				<div class="mui-input-row">
+					<label>手机号码</label>
+					<input id='roomname' type="text" name="phone" class="mui-input-clear mui-input" placeholder="">
+				</div>
+				<div class="mui-input-row">
+					<label>身份证号码</label>
+					<input id='roomname' type="text" name="idcard" class="mui-input-clear mui-input" placeholder="">
+				</div>
+			</form>
+			<div class="mui-content-padded">
+				<button id='wantlive' class="mui-btn mui-btn-block mui-btn-primary" onclick="beginLive()" title="{{session_push}}####{{roomid}}####{{chatid}}####{{user.id}}">我要直播</button>
+			</div>
+			<div class="mui-content-padded oauth-area">
+			</div>
+		</div>
+		<script src="{% static "assets/js/mui/mui.min.js" %}"></script>
+		<script src="{% static "assets/js/mui/mui.enterfocus.js" %}"></script>
+		<script src="{% static "assets/js/mui/app.js" %}"></script>
+		<script src="{% static "assets/js/jquery-3.1.1.js" %}"></script>
+		<script>
+			$(document).ready(function() {
+				{% if not user.is_authenticated %}
+
+				{% else %}
+					var data = $('#wantlive').attr('title');
+					if ( data.length > 18 && data != "wantlive" ){
+						jsApp.jsStartPushLive(data);  
+					}
+
+					$('#upload_image').change(function(event) {
+						var files = event.target.files, file;
+						if (files && files.length > 0) {
+						  file = files[0];
+
+						  if(file.size > 1024 * 1024 * 2) {
+							alert('图片大小不能超过 2MB!');
+							return false;
+						  }
+
+						  var URL = window.URL || window.webkitURL;
+						  var imgURL = URL.createObjectURL(file);
+						  $("#upload_image_show").attr("src", imgURL);
+						}
+					 });
+				{% endif %}
+			});
+
+			function beginLive(){
+				{% if not user.is_authenticated %}
+									alert("请先登录！");
+					window.location.href = "/user/login/"
+				{% else %}
+				document.getElementById('create_room').submit();
+				{% endif %}
+			}
+		</script>
+	</body>
+
+</html>

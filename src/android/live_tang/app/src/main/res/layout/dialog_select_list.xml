@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="260dp"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:gravity="center_horizontal" >
+        
+	<TextView 
+	    android:id="@+id/tv_text_title"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:background="#383838"
+        android:gravity="center"
+	    android:text="选择参数"
+	    android:textColor="#ffffff"
+	    android:textSize="18dp"/>
+    
+    <ListView 
+        android:id="@+id/lv_select_list"
+        android:layout_width="match_parent"
+        android:layout_height="184dp"
+        android:gravity="center"
+	    android:listSelector="#ff4c34"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    
+</LinearLayout>

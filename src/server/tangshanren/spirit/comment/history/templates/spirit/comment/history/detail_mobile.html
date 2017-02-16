@@ -1,0 +1,72 @@
+<!-- {% extends "spirit/_base.html" %} -->
+{% load spirit_tags i18n %}
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/css/common.css" %}"/>
+    <link rel="stylesheet" href="{% static "spirit/stylesheets/styles.all.min.css" %}">
+    <script src="{% static "spirit/scripts/all.min.js" %}"></script>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">发帖</h1>
+    </header>
+{% block content %}
+    <div class="comments">
+
+        {% for c in comments %}
+            <div class="comment">
+
+                <div class="comment-media">
+                    <div class="comment-img">
+                        <img class="comment-avatar" src="{% get_gravatar_url user=c.comment_fk.user size=50 %}" />
+                    </div>
+
+                    <div class="comment-body">
+                        <div class="comment-info">
+
+                            <div class="comment-username">
+                                <a href="{{ c.comment_fk.user.st.get_absolute_url }}">{{ c.comment_fk.user.username }}</a>
+                            </div>
+
+                            <ul class="comment-date">
+                                <li title="{{ c.date }}">{{ c.date|shortnaturaltime }}</li>
+                            </ul>
+
+                        </div>
+
+                        <div class="comment-text">
+                            {{ c.comment_html|safe }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+    {% render_paginator comments %}
+
+    <script type="text/javascript" src="{% static "assets/js/mui/mui.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "assets/js/common.js" %}"></script>
+    <script>
+    $( document ).ready(function() {
+
+        hljs.initHighlightingOnLoad();
+
+        $('.comment-text').comment_diff();
+    });
+    </script>
+{% endblock %}
+
+</body>
+</html>
+

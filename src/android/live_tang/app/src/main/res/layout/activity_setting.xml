@@ -1,0 +1,213 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.live.hanbox.live_tang.test.TestActivity" >
+
+    <LinearLayout
+        android:id="@+id/iv_roominfo_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:background="@drawable/bg_profile"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_roominfo_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/bg_input_url"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:text="请输入推流地址:"
+                android:textSize="18sp"
+                android:textColor="#666666" />
+
+            <EditText
+                android:id="@+id/et_streamurl"
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:background="@null"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="start"
+                android:maxLines="4"
+                android:text="update url by replace mStreamKey's value in SettingActivity.java"
+                android:textSize="15sp"
+                android:textColor="#10bcee"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+  
+	
+    <RadioGroup
+        android:id="@+id/radioGroup0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_roominfo_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center">
+        <RadioButton
+            android:id="@+id/radio1080p"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="1080P"
+            android:textColor="#666666"
+            android:textColorHighlight="#ff0000"
+            android:textSize="15sp" />
+        <RadioButton
+            android:id="@+id/radio720p"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="720P"
+            android:checked="true"
+            android:layout_marginLeft="6dp"
+            android:textColor="#666666"
+            android:textColorHighlight="#ff0000"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radio480p"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="480P"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+        <RadioButton
+            android:id="@+id/radio360p"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="360P"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+   </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroup0"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioLandscape"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="横屏"
+            android:textColor="#666666"
+            android:textColorHighlight="#ff0000"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/radioPortrait"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="竖屏"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_below="@id/radioGroup1"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/slc_btn_start"
+        android:onClick="onClickStart" />
+
+    <!-- <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v1.0"
+            android:textColor="#cccccc"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="9dp"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHowTo"
+            android:text="直播小贴士"
+            android:textColor="#ff4c34"
+            android:textSize="12dp" />
+    </LinearLayout> -->
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        layout="@layout/loading_animation"
+        android:visibility="invisible" />
+
+</RelativeLayout>

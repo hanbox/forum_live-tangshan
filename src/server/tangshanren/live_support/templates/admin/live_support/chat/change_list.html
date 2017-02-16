@@ -1,0 +1,69 @@
+{% extends "admin/change_list.html" %}
+{% load url from future %}
+{% load i18n admin_list %}
+
+{% block content_title %}
+<h1 id="site-name">{% trans 'Chat Admin' %}</h1>
+{% endblock %}
+
+{% block content %}
+    <script>
+        document.get_messages_url = "{% url "chat:get_messages" %}";
+    </script>
+    <div class="module">
+        <div class="pending_chats">
+            <h4>{% trans 'Pending Chats' %}</h4>
+            <ul>
+            {% for chat in pending_chats %}
+                <li><a class="{{ chat.is_active }}" href="{% url "chat:join_chat" chat.id %}">{{ chat.name }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="active_chats">
+        <h4>{% trans 'Your Chats' %}</h4>
+        <ul class="chat_names">
+        {% for chat in active_chats %}
+            <li><a href="{{ chat.id }}" send_message_url="{% url "chat:post_message" chat.id %}">{{ chat.name }}</a></li>
+        {% endfor %}
+        </ul>
+        {% for chat in active_chats %}
+            <div class="chat">
+                <div class="clear_left"></div>
+                <div id="chat_{{ chat.id }}" class="message_list">
+                <div class="status">{% trans 'The user seems to have disconnected.' %}</div>
+                    <ul>
+                    <li class="question">Question: {{ chat.details }}</li>
+                    {% for message in chat.messages.all %}
+                        {% if message.name %}
+                            <li id="message_{{ message.id }}">{{ message.name }}: {{ message.message }}</li>
+                        {% else %}
+                            <li id="message_{{ message.id }}" class="system_message">{{ message.message }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    <div class="message_box_container">
+                        <form method="post" action="{% url "chat:post_message" chat.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" class="chat_id" name="chat_id" value="{{ chat.id }}" />
+                            <input type="text" class="message_box" name="message" />
+                            <input type="submit" class="send_message_button" value="{% trans 'Send' %}" />
+                        </form>
+                        <form method="post" 
+                            action="{% url "chat:end_chat" chat.id %}"
+                        >
+                            {% csrf_token %}
+                            <input type="hidden" name="end_chat" value="true" />
+                            <input type="submit" class="end_chat_button" value="{% trans 'End' %}" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="clear_left"></div>
+    </div>
+<br />
+<br />
+{# block.super #}
+{% endblock %}
+

@@ -1,0 +1,69 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+<div class="comment-text js-box-preview-content" style="display:none;"></div>
+<ul class="reply-markdown">
+	<li><a class="js-box-bold" href="#" title="{% trans "Bold" %}"><i class="fa fa-bold"></i></a></li><!--
+ --><li><a class="js-box-italic" href="#" title="{% trans "Italic" %}"><i class="fa fa-italic"></i></a></li><!--
+ --><li><a class="js-box-list" href="#" title="{% trans "List" %}"><i class="fa fa-list"></i></a></li><!--
+ --><li><a class="js-box-url" href="#" title="{% trans "URL" %}"><i class="fa fa-link"></i></a></li><!--
+ --><li><a class="js-box-image" href="#" title="{% trans "Image" %}"><i class="fa fa-picture-o"></i></a></li><!--
+ --><li><a class="js-box-poll" href="#" title="{% trans "Poll" %}"><i class="fa fa-bar-chart-o"></i></a></li><!--
+ --><li><a class="js-box-preview" href="#" title="{% trans "Preview" %}"><i class="fa fa-eye"></i></a></li>
+</ul>
+
+<script>
+    $( document ).ready(function() {
+
+        marked.setOptions( {
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: false,
+            breaks: true,
+            pedantic: false,
+            sanitize: true,
+            smartLists: false,
+            smartypants: false
+        } );
+
+        $( '.js-reply' ).find( 'textarea' ).editor_image_upload( {
+			csrfToken: "{{ csrf_token }}",
+			target: "{% url "spirit:comment:image-upload-ajax" %}",
+			placeholderText: "{% trans "uploading {image_name}" %}"
+		} )
+        .editor( {
+			boldedText: "{% trans "bolded text" %}",
+			italicisedText: "{% trans "italicised text" %}",
+			listItemText: "{% trans "list item" %}",
+			linkText: "{% trans "link text" %}",
+			linkUrlText: "{% trans "link url" %}",
+			imageText: "{% trans "image text" %}",
+			imageUrlText: "{% trans "image url" %}",
+			pollTitleText: "{% trans "Title" %}",
+			pollChoiceText: "{% trans "Description" %}"
+		} )
+        .atwho({
+			at: ':',
+			tpl: "<li data-value=':${name}:'><i class=\"tw tw-${class_name}\"></i> ${name} </li>",
+			data: $.emoji_list(),
+            callbacks: {
+                before_save: function(data) {return data},  // Avoid extra work
+                tpl_eval: function(tpl, map) {
+                    map.class_name = map.name
+                            .split('_').join('-')
+                            .split('+').join('plus');
+
+                    try {
+                        return tpl.replace(/\$\{([^\}]*)\}/g, function(tag, key, pos) {
+                            return map[key]
+                        });
+                    } catch (error) {
+                        return "";
+                    }
+                }
+
+            }
+		});
+
+	});
+</script>

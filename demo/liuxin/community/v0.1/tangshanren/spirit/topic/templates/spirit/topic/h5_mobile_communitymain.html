@@ -1,0 +1,261 @@
+{% load spirit_tags i18n %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{% static "assets/css/mui/mui.min.css" %}"/>
+	<link rel="stylesheet" href="{% static "assets/css/common.css"%}"/>
+	<style>
+		.mui-control-content {
+		background-color: white;
+		min-height: 215px;
+		}
+		.mui-control-content .mui-loading {
+		margin-top: 50px;
+		}
+
+		.mui-card-header.mui-card-media{
+			padding: 0px;
+		}
+
+		.mui-card-content{
+			font-size: 12px;
+		    position: relative;
+		    padding: 0px;
+		    margin: 0px;
+		    background-color: rgba(0, 0, 0, 0.60);
+		}
+
+		.mui-card-content-inner{
+			padding: 0px;
+			padding-left:20px;
+		}
+
+		p{
+			font-size: 10px;
+			margin-bottom: 0px;
+			color: #eee;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mui-content">
+		<div id="slider" class="mui-slider" data-slider="1">
+			<div class="mui-slider-group mui-slider-loop" style="transform: translate3d(-1500px, 0px, 0px) translateZ(0px);">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="{% static "assets/img/yuantiao.jpg"%}">
+						<p class="mui-slider-title">静静看这世界</p>
+					</a>
+				</div>
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="{% static "assets/img/shuijiao.jpg"%}">
+						<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+					</a>
+				</div>
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="{% static "assets/img/muwu.jpg"%}">
+						<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="{% static "assets/img/shuijiao.jpg"%}">
+						<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator mui-text-right">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+
+		<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1mobile">
+				最热
+			</a>
+					<a class="mui-control-item" href="#item2mobile">
+				最新
+			</a>
+					<a class="mui-control-item" href="#item3mobile">
+				地区
+			</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+
+				        {% for t in topics %}
+			        	<div class="mui-card" onClick="OnClickTopic('{{ t.get_bookmark_url }}')">
+							<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url({% static "assets/img/cbd.jpg)"%}">
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner">
+										<img src="{% static "assets/img/logo.png"%}" style="width: 30px;height: 30px;float:left;margin-top: 5px;border-radius:50%">
+										
+										<div style="padding-left:40px">
+											<p>{{t.user}} <span style="margin-left: 20px;color: #bbb;font-size: 5px;">{{ t.last_active|shortnaturaltime }}</span></p>
+											<p style="font-size: 15px;">{{t.title}}</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="mui-card-content" style="position: absolute;width: 100%;bottom: 2px;">
+									<div class="mui-card-content-inner">
+										<span {% if t.category.color %}style="float: left;margin-left: 20px;color: {{ t.category.color }};"{% endif %}>{{ t.category.title }}</span>
+										<span style="float: right;margin-right: 20px;"><img src="{% static "assets/icon/comment_small.svg"%}" style="width: 19px;height: 19px;float:left;">{{t.comment_count}}</span>
+									</div>
+								</div>
+							</div>
+						</div>		
+				        {% empty %}
+				            <p>{% trans "There are no topics here, yet" %}</p>
+				        {% endfor %}
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url({% static "assets/img/cbd.jpg)"%}">
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner">
+										<img src="{% static "assets/img/logo.png"%}" style="width: 30px;height: 30px;float:left;margin-top: 5px;border-radius:50%">
+										
+										<div style="padding-left:40px">
+											<p>留心 <span style="margin-left: 20px;color: #bbb;font-size: 5px;">52秒</span></p>
+											<p style="font-size: 15px;">XXXXXXXX</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="mui-card-content" style="position: absolute;width: 100%;bottom: 2px;">
+									<div class="mui-card-content-inner">
+										<span style="float: left;margin-left: 20px;">地区</span>
+										<span style="float: right;margin-right: 20px;"><img src="{% static "assets/icon/comment_small.svg"%}" style="width: 19px;height: 19px;float:left;">1</span>
+									</div>
+								</div>
+							</div>
+						</div>		
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<ul class="mui-table-view">
+				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    唐山市区
+				                </a>
+				            </li>
+				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    乐亭
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    滦南
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    迁安
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    丰南
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    唐海
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                   遵化
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    迁西
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    丰润
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    滦县
+				                </a>
+				            </li>
+				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    玉田
+				                </a>
+				            </li>
+				            				            				            <li class="mui-table-view-cell">
+				                <a class="mui-navigate-right">
+				                    <span class="mui-badge mui-badge-danger">15</span>
+				                    开平
+				                </a>
+				            </li>
+				        </ul>
+					</div>
+				</div>
+			</div>
+	</div>
+	<script type="text/javascript" src="{% static "assets/js/jquery-3.1.1.js"%}"></script>
+	<script type="text/javascript" src="{% static "assets/js/mui/mui.min.js"%}"></script>
+	<script type="text/javascript" src="{% static "assets/js/common.js"%}"></script>
+
+	<script type="text/javascript">
+		mui.init({
+			swipeBack: false
+		});
+		(function($) {
+			$('.mui-scroll-wrapper').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+			$('.mui-input-group').on('change', 'input', function() {
+				if (this.checked) {
+					sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+					//force repaint
+					sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+				}
+			});
+		})(mui);
+
+		$(document).ready(function() {
+
+		});
+
+		function OnClickTopic(des){
+			var curUrl = window.location.href;
+			curUrl = curUrl.substring(0, curUrl.length - 1);
+			window.location.href = curUrl + des;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% load spirit_tags i18n %}
+
+{% include "spirit/comment/flag/admin/_tabs.html" with active_tab=active_tab %}
+
+<div class="rows">
+
+    {% for f in flags %}
+        <div class="row">
+            <a href="{{ f.comment.get_absolute_url }}">{{ f.comment.topic.title }}</a> <a class="row-edit" href="{% url "spirit:admin:flag:detail" pk=f.pk %}"><i class="fa fa-cog"></i> {% trans "moderate" %}</a>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% render_paginator flags %}

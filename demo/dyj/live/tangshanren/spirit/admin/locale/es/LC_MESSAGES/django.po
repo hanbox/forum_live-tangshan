@@ -1,0 +1,115 @@
+#
+# Translators:
+# Esteban M. Castro Borsani <ecastroborsani@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Spirit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-23 19:55+0000\n"
+"PO-Revision-Date: 2015-10-20 13:37+0000\n"
+"Last-Translator: Esteban M. Castro Borsani <ecastroborsani@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/spirit-project/spirit/"
+"language/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:13
+msgid "site name"
+msgstr "nombre del sitio"
+
+#: forms.py:14
+msgid "site description"
+msgstr "descripción del sitio"
+
+#: forms.py:15
+msgid "footer snippet"
+msgstr "codigo al pie"
+
+#: forms.py:17
+msgid "This gets rendered just before the footer in your template."
+msgstr "Esto se agrega justo antes del pie de tu template."
+
+#: forms.py:18
+msgid "comments per page"
+msgstr "comentarios por pagina"
+
+#: forms.py:19
+msgid "topics per page"
+msgstr "discusiones por pagina"
+
+#: templates/spirit/admin/_side_menu.html:3
+msgid "Show menu"
+msgstr "Mostrar menu"
+
+#: templates/spirit/admin/_side_menu.html:9
+#: templates/spirit/admin/dashboard.html:5
+#: templates/spirit/admin/dashboard.html:11
+msgid "Dashboard"
+msgstr "Panel"
+
+#: templates/spirit/admin/_side_menu.html:10
+msgid "Basic settings"
+msgstr "Configuración basica"
+
+#: templates/spirit/admin/_side_menu.html:11
+#: templates/spirit/admin/dashboard.html:47
+msgid "Categories"
+msgstr "Categorias"
+
+#: templates/spirit/admin/_side_menu.html:12
+#: templates/spirit/admin/dashboard.html:31
+msgid "Topics"
+msgstr "Temas"
+
+#: templates/spirit/admin/_side_menu.html:13
+msgid "Users"
+msgstr "Usuarios"
+
+#: templates/spirit/admin/_side_menu.html:14
+#: templates/spirit/admin/dashboard.html:43
+msgid "Flags"
+msgstr "Reportes"
+
+#: templates/spirit/admin/config_basic.html:5
+#: templates/spirit/admin/config_basic.html:11
+msgid "Basic Settings"
+msgstr "Configuraciones basicas"
+
+#: templates/spirit/admin/config_basic.html:17
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/spirit/admin/dashboard.html:14
+msgid "Software"
+msgstr "Software"
+
+#: templates/spirit/admin/dashboard.html:17
+msgid "Installed"
+msgstr "Instalado"
+
+#: templates/spirit/admin/dashboard.html:18
+msgid "Latest"
+msgstr "Ultima"
+
+#: templates/spirit/admin/dashboard.html:22
+msgid "Statistics"
+msgstr "Estadisticas"
+
+#: templates/spirit/admin/dashboard.html:27
+msgid "Members"
+msgstr "Miembros"
+
+#: templates/spirit/admin/dashboard.html:35
+msgid "Comments"
+msgstr "Comentarios"
+
+#: templates/spirit/admin/dashboard.html:39
+msgid "Likes"
+msgstr "Me gusta"
+
+#: views.py:30
+msgid "Settings updated!"
+msgstr "Configuración actualizada!"

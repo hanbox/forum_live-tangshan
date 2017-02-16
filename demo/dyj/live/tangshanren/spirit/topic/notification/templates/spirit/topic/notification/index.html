@@ -1,0 +1,17 @@
+{% extends "spirit/_base.html" %}
+
+{% load spirit_tags i18n %}
+
+{% block title %}{% trans "Notifications" %}{% endblock %}
+
+{% block content %}
+
+    <h1 class="headline">{% trans "Notifications" %}</h1>
+
+    <div class="rows">
+        {% include "spirit/topic/notification/_render_list.html" %}
+    </div>
+
+    {% render_paginator notifications %}
+
+{% endblock %}
