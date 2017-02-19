@@ -29,5 +29,7 @@
             --直播具体模块于android、ios下完成
           -个人信息
             --充值以及第三方登录于android、ios下完成
-            
+    android端
+    ios端
+    
 ##django需要安装配置文件于项目中server/tangshanren/requirements.txt
